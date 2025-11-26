@@ -1,0 +1,59 @@
+---
+created: "{{date}}"
+tags:
+  - daily
+---
+
+# {{date}} {{time}}
+
+## Focus
+
+> What's the one thing that matters most today?
+
+
+
+## Tasks
+
+### Due Today
+```dataview
+TABLE WITHOUT ID
+  file.link AS "Item",
+  type AS "Type",
+  priority AS "Priority",
+  project AS "Project"
+FROM "Items"
+WHERE due = date(today) AND status != "Done"
+SORT priority ASC
+```
+
+### Active Work
+```dataview
+TABLE WITHOUT ID
+  file.link AS "Item",
+  type AS "Type",
+  parent AS "Parent",
+  project AS "Project"
+FROM "Items"
+WHERE status = "Active"
+SORT priority ASC
+LIMIT 10
+```
+
+## Meetings
+
+```dataview
+TABLE WITHOUT ID
+  file.link AS "Meeting",
+  date AS "Time",
+  project AS "Project"
+FROM "Items"
+WHERE type = "Meeting" AND date = date(today)
+SORT date ASC
+```
+
+## Log
+
+-
+
+## Notes
+
