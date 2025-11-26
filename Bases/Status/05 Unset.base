@@ -3,7 +3,8 @@ views:
     name: Table
     filters:
       and:
-        - status == ["Done"]
+        - file.folder != "Templates"
+        - status.isEmpty()
         - or:
             - type == ["Task"]
             - type == ["Bug"]
@@ -12,6 +13,7 @@ views:
             - type == ["Project"]
             - type == ["Goal"]
             - type == ["Idea"]
+            - type == ["Feature"]
     order:
       - file.name
       - status

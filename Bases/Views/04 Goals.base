@@ -3,6 +3,7 @@ views:
     name: Table
     filters:
       and:
+        - file.folder != "Templates"
         - type == ["Goal"]
     order:
       - file.name

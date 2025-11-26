@@ -3,7 +3,8 @@ views:
     name: Table
     filters:
       and:
-        - type == ["Documentation"]
+        - file.folder != "Templates"
+        - type == ["Contact"]
     order:
       - file.name
       - status
@@ -15,5 +16,9 @@ views:
       - priority
       - due
       - created
-      - doc_type
-      - last_reviewed
+      - email
+      - phone
+      - company
+      - role
+      - linkedin
+      - location

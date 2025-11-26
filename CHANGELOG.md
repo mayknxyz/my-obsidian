@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.5.0] - 2025-11-26
+
+### Added
+
+- Feature type with template and base view (09 Features.base)
+- Wiki type with template and base view (13 Wiki.base)
+- Feature type filter to all Status and Timeline bases
+- Files/ folder for attachments (Core Plugin: Files and links)
+- Bases/Custom/ folder for user-defined bases (won't conflict with repo updates)
+- Files and Links setup instructions in README
+- Tip in README about preserving default bases for pulling updates
+
+### Changed
+
+- Renamed all templates to "Template: {Name}.md" format
+- Updated template frontmatter to use correct types (was `type: Template`, now actual type)
+- Added `file.folder != "Templates"` filter to all 24 bases
+- Removed Resources/ folder from documentation
+
 ## [0.4.0] - 2025-11-26
 
 ### Added

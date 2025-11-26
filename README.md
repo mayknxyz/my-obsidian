@@ -21,6 +21,8 @@ A flat-file, property-driven system where all items live in a single folder (`It
 5. Install Dataview plugin (for embedded queries)
 6. Start creating items using the templates
 
+> **Tip:** To pull future updates from this repo, avoid modifying default bases in `Status/`, `Timeline/`, and `Views/`. Instead, create custom bases in `Bases/Custom/` or duplicate existing ones.
+
 ## Setup
 
 ### Templates (Core Plugin)
@@ -36,19 +38,26 @@ A flat-file, property-driven system where all items live in a single folder (`It
 1. Settings → Core plugins → Enable **Daily notes**
 2. Settings → Daily notes:
    - New file location: `Items`
-   - Template file: `Templates/Journal Template`
+   - Template file: `Templates/Template: Journal`
+
+### Files and Links (Core Plugin)
+
+1. Settings → Files and links:
+   - Default location for new attachments: `In the folder specified below`
+   - Attachment folder path: `Files`
 
 ## Structure
 
 ```
 Vault/
 ├── Bases/
+│   ├── Custom/             # Your custom bases (won't conflict with updates)
 │   ├── Status/             # Inbox, Backlog, Active, Blocked, Done
 │   ├── Timeline/           # Overdue, Today, This Week, Upcoming, Someday
-│   └── Views/              # Ideas, Journal, Goals, Projects, etc.
+│   └── Views/              # Ideas, Journal, Goals, Projects, Wiki, etc.
+├── Files/                  # Attachments - Core Plugin: Files and links
 ├── Items/                  # All typed items (flat) + Journal entries
-├── Resources/              # Reference material
-├── Templates/              # Item templates
+├── Templates/              # Item templates - Core Plugin: Templates
 └── REMINDERS.md            # Startup reminders (pinned tab)
 ```
 
@@ -66,23 +75,25 @@ Edit it directly anytime. No special syntax required—just plain markdown.
 
 | Type | Purpose |
 |------|---------|
+| Template | Item templates |
 | Account | Top-level context (personal, work, business) |
 | Goal | OKRs and objectives |
 | Project | Deliverable work |
 | Epic | Feature grouping |
 | Story | User-facing functionality |
 | Task | Actionable work item |
+| Feature | New capability or enhancement |
 | Bug | Defect tracking |
 | Idea | Parking lot for concepts |
 | Journal | Quick capture, daily notes |
 | Contact | People/CRM |
 | Meeting | Meeting notes |
-| Documentation | Docs and references |
+| Wiki | Code snippets, concepts, cheatsheets |
 
 ## Hierarchy
 
 ```
-Account → Goal → Project → Epic → Story → Task/Bug
+Account → Goal → Project → Epic → Story → Task/Feature/Bug
 ```
 
 Supporting types (Contact, Meeting, Documentation) link via `project` or `parent`.
@@ -97,6 +108,8 @@ Supporting types (Contact, Meeting, Documentation) link via `project` or `parent
 - `area` - Dev, Ops, Marketing, Sales, Finance, Admin
 - `priority` - P1, P2, P3
 - `due` - Deadline
+- `wiki` - Wiki category (Languages, Frameworks, Tools, Platforms)
+- `link` - Technology reference as wiki link (e.g., `[[Python]]`, `[[Docker]]`)
 
 ## Status Flow
 

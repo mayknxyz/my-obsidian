@@ -3,6 +3,7 @@ views:
     name: Table
     filters:
       and:
+        - file.folder != "Templates"
         - due >= today()
         - due <= today() + "7d"
         - status != ["Done"]
@@ -14,6 +15,7 @@ views:
             - type == ["Project"]
             - type == ["Goal"]
             - type == ["Idea"]
+            - type == ["Feature"]
     order:
       - file.name
       - status
