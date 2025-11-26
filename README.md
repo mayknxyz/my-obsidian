@@ -35,16 +35,18 @@ A flat-file, property-driven system where all items live in a single folder (`It
 
 1. Settings → Core plugins → Enable **Daily notes**
 2. Settings → Daily notes:
-   - New file location: `Daily`
-   - Template file: `Templates/Daily Template`
+   - New file location: `Items`
+   - Template file: `Templates/Journal Template`
 
 ## Structure
 
 ```
 Vault/
-├── Bases/                  # Saved Base views
-├── Daily/                  # Daily notes
-├── Items/                  # All typed items (flat)
+├── Bases/
+│   ├── Status/             # Inbox, Backlog, Active, Blocked, Done
+│   ├── Timeline/           # Overdue, Today, This Week, Upcoming, Someday
+│   └── Views/              # Ideas, Journal, Goals, Projects, etc.
+├── Items/                  # All typed items (flat) + Journal entries
 ├── Resources/              # Reference material
 ├── Templates/              # Item templates
 └── REMINDERS.md            # Startup reminders (pinned tab)
@@ -72,6 +74,7 @@ Edit it directly anytime. No special syntax required—just plain markdown.
 | Task | Actionable work item |
 | Bug | Defect tracking |
 | Idea | Parking lot for concepts |
+| Journal | Quick capture, daily notes |
 | Contact | People/CRM |
 | Meeting | Meeting notes |
 | Documentation | Docs and references |
@@ -101,6 +104,18 @@ Supporting types (Contact, Meeting, Documentation) link via `project` or `parent
 Inbox → Backlog → Active → Done
                     ↓
                  Blocked/Waiting
+```
+
+### Status Bases
+
+```
+Bases/Status/
+├── 01 Blocked      # Unblock first
+├── 02 Active       # Clear active actionable items
+├── 03 Inbox        # Triage new actionable items
+├── 04 Backlog      # Prep actionable items
+├── 05 Unset        # Reassess + Set status
+└── 06 Done         # Completed
 ```
 
 ## Recommended Plugins

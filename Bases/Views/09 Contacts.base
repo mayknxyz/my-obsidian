@@ -1,0 +1,23 @@
+views:
+  - type: table
+    name: Table
+    filters:
+      and:
+        - type == ["Contact"]
+    order:
+      - file.name
+      - status
+      - type
+      - parent
+      - project
+      - account
+      - area
+      - priority
+      - due
+      - created
+      - email
+      - phone
+      - company
+      - role
+      - linkedin
+      - location

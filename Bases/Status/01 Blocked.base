@@ -1,0 +1,27 @@
+views:
+  - type: table
+    name: Table
+    filters:
+      and:
+        - or:
+            - status == ["Blocked"]
+            - status == ["Waiting"]
+        - or:
+            - type == ["Task"]
+            - type == ["Bug"]
+            - type == ["Story"]
+            - type == ["Epic"]
+            - type == ["Project"]
+            - type == ["Goal"]
+            - type == ["Idea"]
+    order:
+      - file.name
+      - status
+      - type
+      - parent
+      - project
+      - account
+      - area
+      - priority
+      - due
+      - created
