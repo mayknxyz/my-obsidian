@@ -1,0 +1,18 @@
+views:
+  - type: table
+    name: Table
+    filters:
+      and:
+        - type == ["Goal"]
+    order:
+      - file.name
+      - status
+      - type
+      - parent
+      - project
+      - account
+      - area
+      - priority
+      - due
+      - created
+    columnSize: {}

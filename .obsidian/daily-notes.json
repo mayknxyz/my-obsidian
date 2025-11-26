@@ -1,5 +1,5 @@
 {
-  "folder": "Daily",
-  "template": "Templates/Daily Template",
+  "folder": "Items",
+  "template": "Templates/Journal Template",
   "autorun": true
 }

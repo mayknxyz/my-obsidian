@@ -1,0 +1,17 @@
+views:
+  - type: table
+    name: Table
+    filters:
+      and:
+        - type == ["Journal"]
+    order:
+      - file.name
+      - status
+      - type
+      - parent
+      - project
+      - account
+      - area
+      - priority
+      - due
+      - created

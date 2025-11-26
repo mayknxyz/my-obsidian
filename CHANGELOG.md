@@ -1,55 +1,35 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-## [0.3.0] - 2025-11-26
+## [0.4.0] - 2025-11-26
 
 ### Added
 
-- LICENSE file (MIT)
-- README badges (License, Release, Obsidian, Stars, Last Commit)
-- CONTRIBUTING.md with contributor guidelines
-- GitHub issue templates (bug report, feature request)
+- Bases/Status/ with 6 status views: Blocked, Active, Inbox, Backlog, Unset, Done
+- Bases/Timeline/ with 5 time-based views: Overdue, Today, This Week, Upcoming, Someday
+- Bases/Views/ with 11 type-based views: Ideas, Journal, Accounts, Goals, Projects, Epics, Stories, Bugs, Contacts, Meetings, Docs
+- Sample items demonstrating various item types (Account, Project, Story, Task, Bug, Contact, Meeting, Journal)
+- Journal Template replacing Daily Template
+- Status Bases documentation in README
 
-## [0.2.0] - 2025-11-26
+### Changed
 
-### Added
+- Daily notes now use Journal Template
+- Renamed "No Status" to "Unset" for clarity
 
-- REMINDERS.md - Persistent reminders file that opens as a pinned tab on startup
-- Main workspace configuration (`.obsidian/workspaces.json`) with REMINDERS.md pinned
-- Workspaces core plugin enabled for workspace management
-- Documentation for REMINDERS.md in README.md and BLUEPRINT.md
+### Removed
 
-## [0.1.0] - 2025-11-26
+- .gitkeep placeholder files (Bases/, Daily/, Items/)
+- Daily Template (replaced by Journal Template)
+- Daily/ folder (journal entries now in Items/)
 
-### Added
+## [0.3.0] - Previous
 
-- Initial vault structure (Bases/, Daily/, Items/, Resources/, Templates/)
-- 12 item templates:
-  - Account Template (top-level context)
-  - Goal Template (OKRs and objectives)
-  - Project Template (deliverable work)
-  - Epic Template (feature grouping)
-  - Story Template (user-facing functionality)
-  - Task Template (actionable work items)
-  - Bug Template (defect tracking)
-  - Idea Template (parking lot)
-  - Contact Template (CRM with frontmatter properties)
-  - Meeting Template (meeting notes)
-  - Documentation Template (docs and references)
-  - Daily Template (daily notes with dataview queries)
-- BLUEPRINT.md with complete architecture documentation
-- README.md with installation and setup instructions
-- Property schema with 7 statuses (Inbox, Backlog, Active, Blocked, Waiting, Done, Archived)
-- Type hierarchy: Account → Goal → Project → Epic → Story → Task/Bug
-- 9 Bases view configurations (5 Core + 4 Strategic)
-- Support for core Templates and Daily Notes plugins
-- Dataview queries in templates for dynamic content
-- nvim compatibility notes
+- Add LICENSE, README badges, and contributing docs
 
-[0.3.0]: https://github.com/mayknxyz/my-obsidian/releases/tag/v0.3.0
-[0.2.0]: https://github.com/mayknxyz/my-obsidian/releases/tag/v0.2.0
-[0.1.0]: https://github.com/mayknxyz/my-obsidian/releases/tag/v0.1.0
+## [0.2.0] - Previous
+
+- Add REMINDERS.md startup reminders
+
+## [0.1.0] - Previous
+
+- Initial release

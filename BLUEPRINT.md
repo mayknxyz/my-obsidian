@@ -11,8 +11,10 @@ A flat-file, property-driven system using Obsidian Bases for dynamic views. All 
 ```
 Vault/
 ├── Bases/                  # Saved Base views
-├── Daily/                  # Daily notes
-├── Items/                  # All typed items (flat)
+│   ├── Status/             # Status-based views (Inbox, Backlog, Active, Blocked, Done)
+│   ├── Timeline/           # Date-based views (Overdue, Today, This Week, Upcoming, Someday)
+│   └── Views/              # Type-based views (Ideas, Journal, Goals, Projects, etc.)
+├── Items/                  # All typed items (flat) + Journal entries
 ├── Resources/              # Reference material, non-actionable
 ├── Templates/              # Item templates
 └── REMINDERS.md            # Startup reminders (pinned tab)
@@ -612,15 +614,28 @@ Use the `doc_type` property to categorize:
 
 ---
 
-### Daily Template
+### Journal Template
 
-**Location:** `Templates/Daily Template.md`
+**Location:** `Templates/Journal Template.md`
+
+The Journal template is used for quick capture of notes, ideas, and daily reflections. Journal entries are created via the Daily Notes plugin and stored in `Items/`.
 
 ```markdown
 ---
+type:
+  - Journal
+status:
+  - Inbox
+parent:
+project:
+account:
+area:
+  -
+priority:
+  -
+due:
 created: "{{date}}"
-tags:
-  - daily
+tags: []
 ---
 
 # {{date}} {{time}}
@@ -629,55 +644,32 @@ tags:
 
 > What's the one thing that matters most today?
 
+## Notes
 
+-
 
-## Tasks
+## Ideas
 
-### Due Today
-```dataview
-TABLE WITHOUT ID
-  file.link AS "Item",
-  type AS "Type",
-  priority AS "Priority",
-  project AS "Project"
-FROM "Items"
-WHERE due = date(today) AND status != "Done"
-SORT priority ASC
-```
-
-### Active Work
-```dataview
-TABLE WITHOUT ID
-  file.link AS "Item",
-  type AS "Type",
-  parent AS "Parent",
-  project AS "Project"
-FROM "Items"
-WHERE status = "Active"
-SORT priority ASC
-LIMIT 10
-```
-
-## Meetings
-
-```dataview
-TABLE WITHOUT ID
-  file.link AS "Meeting",
-  date AS "Time",
-  project AS "Project"
-FROM "Items"
-WHERE type = "Meeting" AND date = date(today)
-SORT date ASC
-```
+-
 
 ## Log
 
 -
-
-## Notes
-
-
 ```
+
+### Journal vs Daily Notes
+
+The Journal system replaces traditional daily notes:
+
+| Aspect | Journal | Traditional Daily |
+|--------|---------|-------------------|
+| Location | `Items/` folder | Separate `Daily/` folder |
+| Type | Has `type: Journal` property | No type property |
+| Workflow | Goes through Inbox → Done flow | Static daily log |
+| Views | Appears in Timeline Bases | Only in calendar view |
+| Purpose | Quick capture, flexible notes | Structured daily review |
+
+Journal entries are actionable items that flow through the status workflow, making them visible in Timeline Bases (Today, This Week, etc.).
 
 ---
 
@@ -735,7 +727,7 @@ Edit the file directly—no special syntax or properties required. Suggested str
 
 | Property        | Type       | Values                                                                              | Purpose                          |
 | --------------- | ---------- | ----------------------------------------------------------------------------------- | -------------------------------- |
-| `type`          | List       | Account, Goal, Idea, Project, Epic, Story, Task, Bug, Contact, Meeting, Documentation | Item classification (dropdown)   |
+| `type`          | List       | Account, Goal, Idea, Project, Epic, Story, Task, Bug, Contact, Meeting, Documentation, Journal | Item classification (dropdown)   |
 | `status`        | List       | Inbox, Backlog, Active, Blocked, Waiting, Done, Archived                            | Workflow state (dropdown)        |
 | `parent`        | Link       | `[[Item Name]]`                                                                     | Direct parent relationship       |
 | `project`       | Link       | `[[Project Name]]`                                                                  | Root project (shortcut access)   |
@@ -791,9 +783,14 @@ Account
 ```
 
 **Supporting Types (not hierarchical):**
+- **Idea** — Parking lot for concepts
+- **Journal** — Quick capture, daily notes
 - **Contact** — People/CRM
 - **Meeting** — Link to `project` or `parent` for context
 - **Documentation** — Link to `project` or `parent` it documents
+
+**Actionable Types** (shown in Timeline Bases):
+- Task, Bug, Story, Epic, Project, Goal, Idea
 
 ### Linking Example
 
@@ -826,24 +823,52 @@ account: "[[Personal]]"
 
 ## Bases Configuration
 
-### Core Views
+Bases are organized into three folders:
 
-| Base Name       | Filters                                           | Columns                                      | Use Case              |
-| --------------- | ------------------------------------------------- | -------------------------------------------- | --------------------- |
-| **Inbox**       | `status = Inbox`                                  | type, created, parent, project               | Triage new items      |
-| **Backlog**     | `status = Backlog`                                | type, priority, parent, project, area, due   | Triaged, not started  |
-| **Active**      | `status = Active`                                 | type, priority, due, parent, project, area   | Daily focus           |
-| **Blocked**     | `status = Blocked OR status = Waiting`            | type, parent, project, due                   | Dependency tracking   |
-| **Done**        | `status = Done`                                   | type, parent, project, created               | Archive/review        |
+```
+Bases/
+├── Status/     # Status-based workflow views
+├── Timeline/   # Date-based views (actionable items only)
+└── Views/      # Type-based views
+```
 
-### Strategic Views
+### Status/ — Workflow Views
 
-| Base Name       | Filters                                           | Columns                                      | Use Case              |
-| --------------- | ------------------------------------------------- | -------------------------------------------- | --------------------- |
-| **Goals**       | `type = Goal`                                     | status, account, due                         | OKR tracking          |
-| **Projects**    | `type = Project`                                  | status, parent (goal), area, due             | Portfolio overview    |
-| **Epics**       | `type = Epic`                                     | status, project, priority                    | Roadmap view          |
-| **Ideas**       | `type = Idea`                                     | area, account, created                       | Parking lot           |
+| # | Base Name   | Filters                                | Use Case              |
+|---|-------------|----------------------------------------|----------------------|
+| 01 | **Inbox**   | `status == ["Inbox"]`                  | Triage new items      |
+| 02 | **Backlog** | `status == ["Backlog"]`                | Triaged, not started  |
+| 03 | **Active**  | `status == ["Active"]`                 | Daily focus           |
+| 04 | **Blocked** | `status == ["Blocked"]` or `["Waiting"]` | Dependency tracking |
+| 05 | **Done**    | `status == ["Done"]`                   | Archive/review        |
+
+### Timeline/ — Date-Based Views
+
+All Timeline Bases filter for **actionable types only**: Task, Bug, Story, Epic, Project, Goal, Idea.
+
+| # | Base Name       | Filters                                      | Use Case                |
+|---|-----------------|----------------------------------------------|-------------------------|
+| 01 | **Overdue**     | `due < today()` + `status != Done`           | Past due items          |
+| 02 | **Today**       | `due == today()` + `status != Done`          | Today's focus           |
+| 03 | **This Week**   | `due >= today()` + `due <= today() + "7d"`   | Week ahead              |
+| 04 | **Upcoming**    | `due > today()` + `due <= today() + "7d"`    | Coming soon             |
+| 05 | **Someday**     | `due == null` + `status != Done`             | No deadline yet         |
+
+### Views/ — Type-Based Views
+
+| # | Base Name        | Filters                    | Use Case              |
+|---|------------------|----------------------------|----------------------|
+| 01 | **Ideas**        | `type == ["Idea"]`         | Parking lot           |
+| 02 | **Journal**      | `type == ["Journal"]`      | Daily notes/capture   |
+| 03 | **Accounts**     | `type == ["Account"]`      | Account contexts      |
+| 04 | **Goals**        | `type == ["Goal"]`         | OKR tracking          |
+| 05 | **Projects**     | `type == ["Project"]`      | Portfolio overview    |
+| 06 | **Epics**        | `type == ["Epic"]`         | Roadmap view          |
+| 07 | **Stories**      | `type == ["Story"]`        | Sprint board          |
+| 08 | **Bugs**         | `type == ["Bug"]`          | Bug triage            |
+| 09 | **Contacts**     | `type == ["Contact"]`      | CRM / People          |
+| 10 | **Meetings**     | `type == ["Meeting"]`      | Meeting log           |
+| 11 | **Docs**         | `type == ["Documentation"]`| Documentation hub     |
 
 ---
 
@@ -923,7 +948,7 @@ Inbox → Backlog → Active → Done
 | Contact       | Contact          | Context, Interactions (frontmatter: email, phone, company, role) |
 | Meeting       | Meeting          | Info, Attendees, Agenda, Notes, Decisions, Action Items   |
 | Documentation | Documentation    | Overview, Audience, Content, Related, Changelog           |
-| Daily         | —                | Focus, Due Today, Active Work, Meetings, Log              |
+| Journal       | Journal          | Focus, Notes, Ideas, Log                                  |
 
 ---
 
@@ -946,23 +971,15 @@ WHERE parent = [[Auth Epic]] AND status != "Done"
 SORT priority ASC
 ```
 
-### Additional Views
-
-Add these Bases as needed:
-
-| Base Name       | Filters                                           | Use Case              |
-| --------------- | ------------------------------------------------- | --------------------- |
-| **Stories**     | `type = Story`                                    | Sprint board          |
-| **Bugs**        | `type = Bug`                                      | Bug triage            |
-| **Contacts**    | `type = Contact`                                  | CRM / People          |
-| **Meetings**    | `type = Meeting`                                  | Meeting log           |
-| **Docs**        | `type = Documentation`                            | Documentation hub     |
-
----
-
 ## Migration / Setup Checklist
 
-- [ ] Create folder structure (`Items/`, `Templates/`, `Bases/`, `Resources/`, `Daily/`)
+- [ ] Create folder structure:
+  - [ ] `Items/`
+  - [ ] `Templates/`
+  - [ ] `Bases/Status/`
+  - [ ] `Bases/Timeline/`
+  - [ ] `Bases/Views/`
+  - [ ] `Resources/`
 - [ ] Create all templates:
   - [ ] `Templates/Account Template.md`
   - [ ] `Templates/Goal Template.md`
@@ -975,15 +992,17 @@ Add these Bases as needed:
   - [ ] `Templates/Contact Template.md`
   - [ ] `Templates/Meeting Template.md`
   - [ ] `Templates/Documentation Template.md`
-  - [ ] `Templates/Daily Template.md`
+  - [ ] `Templates/Journal Template.md`
 - [ ] Configure Templater or core Templates plugin
-- [ ] Set Daily Notes plugin to use `Daily/` folder and Daily Template
+- [ ] Set Daily Notes plugin to use `Items/` folder and Journal Template
 - [ ] Create initial Account item(s)
 - [ ] Create 2-3 Goals linked to Account
 - [ ] Create first Project linked to a Goal
-- [ ] Build Bases views (start with Inbox, Backlog, Active)
+- [ ] Build Bases views:
+  - [ ] Status/: Inbox, Backlog, Active, Blocked, Done
+  - [ ] Timeline/: Overdue, Today, This Week, Upcoming, Someday
+  - [ ] Views/: Ideas, Journal, Accounts, Goals, Projects, Epics, Stories, Bugs, Contacts, Meetings, Docs
 - [ ] Test capture → triage → complete workflow
-- [ ] Add remaining Bases as needed
 
 ---
 
