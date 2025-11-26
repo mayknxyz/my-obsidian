@@ -14,7 +14,8 @@ Vault/
 ├── Daily/                  # Daily notes
 ├── Items/                  # All typed items (flat)
 ├── Resources/              # Reference material, non-actionable
-└── Templates/              # Item templates
+├── Templates/              # Item templates
+└── REMINDERS.md            # Startup reminders (pinned tab)
 ```
 
 ---
@@ -677,6 +678,56 @@ SORT date ASC
 
 
 ```
+
+---
+
+## REMINDERS.md
+
+**Location:** `REMINDERS.md` (vault root)
+
+A plain markdown file for persistent reminders that opens automatically on startup via the `Main` workspace (pinned tab).
+
+### Purpose
+
+Unlike Items which flow through the status workflow (Inbox → Backlog → Active → Done), REMINDERS.md is for **persistent, always-visible content**:
+
+- **Daily habits** — Recurring checklist items you review each day
+- **Important rules** — Guidelines you should always follow
+- **Don't forget** — Persistent reminders that don't fit the task workflow
+
+### How It Works
+
+1. The `Main` workspace (saved in `.obsidian/workspaces.json`) includes REMINDERS.md as a pinned tab
+2. When you load the workspace, REMINDERS.md opens alongside your daily note
+3. Pinned tabs persist across sessions
+
+### Editing
+
+Edit the file directly—no special syntax or properties required. Suggested structure:
+
+```markdown
+# Reminders
+
+## Daily Habits
+- [ ] Review calendar
+- [ ] Check email
+
+## Important Rules
+- Always backup before major changes
+
+## Don't Forget
+- Weekly sync every Monday
+```
+
+### When to Use REMINDERS.md vs Items
+
+| Use Case | Where |
+|----------|-------|
+| One-time task with deadline | Items/ (Task type) |
+| Recurring habit/checklist | REMINDERS.md |
+| Persistent rule/guideline | REMINDERS.md |
+| Project-related work | Items/ (appropriate type) |
+| Quick daily reminder | REMINDERS.md |
 
 ---
 
