@@ -21,11 +21,20 @@ Thanks for your interest in contributing! This project is a Bases-First Obsidian
 ### Submitting Changes
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/your-feature`)
-3. Make your changes
-4. Test in a fresh Obsidian vault
-5. Commit with a clear message
-6. Push and open a Pull Request
+2. Add upstream remote: `git remote add upstream https://github.com/mayknxyz/my-obsidian.git`
+3. Create a feature branch from latest upstream:
+   ```bash
+   git fetch upstream
+   git checkout -b feature/your-feature upstream/main
+   ```
+4. Make changes to **template files only**:
+   - `Templates/` - Item templates
+   - `Bases/{Status,Timeline,Views}/` - Default bases
+   - Documentation files (README, BLUEPRINT, etc.)
+   - **Do not include** personal items from `Items/`, `Files/`, or `Bases/Custom/`
+5. Test in a fresh Obsidian vault
+6. Commit with a clear message
+7. Push and open a Pull Request
 
 ## What We're Looking For
 
