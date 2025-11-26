@@ -1,5 +1,11 @@
 # my-obsidian
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/mayknxyz/my-obsidian)](https://github.com/mayknxyz/my-obsidian/releases)
+[![Obsidian](https://img.shields.io/badge/Obsidian-1.5+-purple)](https://obsidian.md)
+[![GitHub Stars](https://img.shields.io/github/stars/mayknxyz/my-obsidian)](https://github.com/mayknxyz/my-obsidian/stargazers)
+[![Last Commit](https://img.shields.io/github/last-commit/mayknxyz/my-obsidian)](https://github.com/mayknxyz/my-obsidian/commits)
+
 A Bases-First Obsidian vault starter kit. Clone this repo and start organizing with dynamic views powered by [Obsidian Bases](https://obsidian.md/blog/bases/).
 
 ## What is this?
