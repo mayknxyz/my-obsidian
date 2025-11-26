@@ -3,7 +3,8 @@ views:
     name: Table
     filters:
       and:
-        - type == ["Meeting"]
+        - file.folder != "Templates"
+        - type == ["Wiki"]
     order:
       - file.name
       - status
@@ -15,5 +16,8 @@ views:
       - priority
       - due
       - created
-      - date
-      - attendees
+      - link
+      - wiki
+      - tags
+    columnSize:
+      note.wiki: 129

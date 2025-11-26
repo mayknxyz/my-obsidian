@@ -7,9 +7,9 @@ parent:
 project:
 account:
 area:
-  -
+  - 
 priority:
-  -
+  - 
 due:
 created: "{{date}}"
 tags: []

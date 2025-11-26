@@ -4,7 +4,7 @@ views:
     filters:
       and:
         - file.folder != "Templates"
-        - type == ["Story"]
+        - type == ["Bug"]
     order:
       - file.name
       - status

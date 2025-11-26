@@ -14,6 +14,7 @@ Vault/
 │   ├── Status/             # Status-based views (Inbox, Backlog, Active, Blocked, Done)
 │   ├── Timeline/           # Date-based views (Overdue, Today, This Week, Upcoming, Someday)
 │   └── Views/              # Type-based views (Ideas, Journal, Goals, Projects, etc.)
+├── Files/                  # Attachments (images, PDFs, etc.)
 ├── Items/                  # All typed items (flat) + Journal entries
 ├── Resources/              # Reference material, non-actionable
 ├── Templates/              # Item templates
@@ -974,6 +975,7 @@ SORT priority ASC
 ## Migration / Setup Checklist
 
 - [ ] Create folder structure:
+  - [ ] `Files/`
   - [ ] `Items/`
   - [ ] `Templates/`
   - [ ] `Bases/Status/`
