@@ -10,9 +10,10 @@ A flat-file, property-driven system where all items live in a single folder (`It
 
 1. Clone this repo into your Obsidian vaults folder
 2. Open as a vault in Obsidian
-3. Configure core plugins (see Setup below)
-4. Install Dataview plugin (for embedded queries)
-5. Start creating items using the templates
+3. Load the main workspace: `Ctrl+P` → "Workspaces: Load workspace" → `Main`
+4. Configure core plugins (see Setup below)
+5. Install Dataview plugin (for embedded queries)
+6. Start creating items using the templates
 
 ## Setup
 
@@ -39,8 +40,19 @@ Vault/
 ├── Daily/                  # Daily notes
 ├── Items/                  # All typed items (flat)
 ├── Resources/              # Reference material
-└── Templates/              # Item templates
+├── Templates/              # Item templates
+└── REMINDERS.md            # Startup reminders (pinned tab)
 ```
+
+## REMINDERS.md
+
+A simple markdown file that opens as a pinned tab on startup (via the `Main` workspace). Use it for:
+
+- **Daily habits** - Recurring checklist items
+- **Important rules** - Things you should always remember
+- **Don't forget** - Persistent reminders
+
+Edit it directly anytime. No special syntax required—just plain markdown.
 
 ## Item Types
 
