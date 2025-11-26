@@ -14,14 +14,30 @@ A flat-file, property-driven system where all items live in a single folder (`It
 
 ## Installation
 
-1. Clone this repo into your Obsidian vaults folder
-2. Open as a vault in Obsidian
-3. Load the main workspace: `Ctrl+P` → "Workspaces: Load workspace" → `Main`
-4. Configure core plugins (see Setup below)
-5. Install Dataview plugin (for embedded queries)
-6. Start creating items using the templates
+1. **Fork** this repository (click "Fork" button on GitHub)
+2. **Clone** your fork:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/my-obsidian.git
+   cd my-obsidian
+   ```
+3. **Add upstream remote** (for future updates):
+   ```bash
+   git remote add upstream https://github.com/mayknxyz/my-obsidian.git
+   ```
+4. **Open in Obsidian** as a vault
+5. **Load workspace**: `Ctrl+P` → "Workspaces: Load workspace" → `Main`
+6. **Configure** core plugins (see Setup below)
 
-> **Tip:** To pull future updates from this repo, avoid modifying default bases in `Status/`, `Timeline/`, and `Views/`. Instead, create custom bases in `Bases/Custom/` or duplicate existing ones.
+## Updating
+
+Sync with the latest template updates:
+
+```bash
+git fetch upstream
+git merge upstream/main
+```
+
+Your data in `Items/`, `Files/`, `Custom/`, and `REMINDERS.md` won't conflict since these folders start empty. Use `Custom/` for your own bases, templates, or any other files you want to keep separate from upstream updates.
 
 ## Setup
 
@@ -51,10 +67,10 @@ A flat-file, property-driven system where all items live in a single folder (`It
 ```
 Vault/
 ├── Bases/
-│   ├── Custom/             # Your custom bases (won't conflict with updates)
 │   ├── Status/             # Inbox, Backlog, Active, Blocked, Done
 │   ├── Timeline/           # Overdue, Today, This Week, Upcoming, Someday
 │   └── Views/              # Ideas, Journal, Goals, Projects, Wiki, etc.
+├── Custom/                 # Your custom files (won't conflict with updates)
 ├── Files/                  # Attachments - Core Plugin: Files and links
 ├── Items/                  # All typed items (flat) + Journal entries
 ├── Templates/              # Item templates - Core Plugin: Templates

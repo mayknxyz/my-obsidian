@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.6.0] - 2025-11-26
+
+### Changed
+
+- Switch to fork-based installation for clean upstream updates
+- Update README with fork/clone/upstream workflow
+- Update CONTRIBUTING with PR guidelines for template-only changes
+
+### Removed
+
+- All sample items from Items/ (prevents merge conflicts on updates)
+
+### Added
+
+- .gitkeep files to preserve empty user folders (Items/, Files/, Custom/)
+- Custom/ folder at root for user files (replaces Bases/Custom/)
+
 ## [0.5.0] - 2025-11-26
 
 ### Added
