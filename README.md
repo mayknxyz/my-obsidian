@@ -69,6 +69,12 @@ Your data in `Items/`, `Files/`, `Custom/`, and `REMINDERS.md` won't conflict si
 3. Settings → TaskNotes:
    - Base views folder: `Bases/Views`
    - Base views prefix: `08 Tasks`
+   - Appearance & UI → Project Autosuggest:
+     - Required property key: `type`
+     - Required property value: `Project`
+   - Property Mapping → Projects: `project`
+   - Property Mapping → Contexts: `context`
+   - User Fields: Remove any empty entries to avoid UNDEFINED fields
 
 TaskNotes manages all task creation, recurring tasks, and calendar integration. See [TaskNotes docs](https://tasknotes.dev/) for configuration.
 
