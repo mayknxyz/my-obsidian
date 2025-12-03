@@ -6,8 +6,10 @@ status:
 parent:
 project:
 account:
-area:
-  - 
+dept:
+  -
+context:
+  -
 priority:
   - 
 due:
