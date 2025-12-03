@@ -8,11 +8,16 @@ views:
     order:
       - file.name
       - status
-      - type
-      - parent
-      - project
-      - account
-      - area
       - priority
       - due
-      - created
+      - scheduled
+      - context
+      - dept
+      - estimate
+      - pomodoros
+      - recurrence
+      - blocked
+      - completed
+      - parent
+      - project
+    columnSize: {}

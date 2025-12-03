@@ -6,10 +6,12 @@ status:
 parent:
 project:
 account:
-area:
+dept:
+  -
+context:
   -
 priority:
-  -
+  - 
 due:
 created: "{{date}}"
 tags: []

@@ -1,5 +1,51 @@
 # Changelog
 
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [0.8.0] - 2025-12-04
+
+### Added
+
+- TaskNotes plugin integration for task management
+- 7 TaskNotes bases in `Bases/Views/` (08 Tasks*.base): table, agenda, calendar, kanban, mini-calendar, relationships, overview
+- New properties for TaskNotes: `scheduled`, `estimate`, `recurrence`, `completed`, `modified`, `archived`, `blocked`, `pomodoros`, `reminders`, `complete_instances`, `icsEventId`, `ics_event`
+- `context` property for GTD-style location/tool filtering (@home, @work, @computer, @phone, @errands)
+- Custom hotkeys: `Alt+T` (insert template), `Ctrl+Shift+N` (create new task)
+- TaskNotes property mapping: `projects` → `project`, `contexts` → `context`
+- TaskNotes project autosuggest filter: `type: Project`
+
+### Changed
+
+- Renamed `area` property to `dept`
+- Priority values changed from P1/P2/P3 to Low/Normal/High
+- Task type now managed by TaskNotes plugin (removed Template: Task.md)
+
+### Removed
+
+- `Templates/Template: Task.md` (TaskNotes handles task creation)
+- `Task` from type dropdown in Property Defaults
+
+## [0.7.0] - 2025-11-27
+
+### Added
+
+- Property type definitions in `.obsidian/types.json` for all 21 properties (enables correct property behavior)
+- `Templates/Template: Property Defaults.md` seed note with dropdown values for type, status, priority, area
+- Wiki type filter to all Status bases (6 files) and Timeline bases (5 files)
+- `priority` and `due` properties to Template: Wiki.md (makes Wiki an actionable item)
+
+### Changed
+
+- Wiki is now an actionable type (appears in Status and Timeline bases)
+- Updated BLUEPRINT.md to include Wiki in actionable types list
+
+### Removed
+
+- Duplicate `wiki` and `link` property types from types.json (redundant with `parent`)
+
 ## [0.6.0] - 2025-11-26
 
 ### Changed

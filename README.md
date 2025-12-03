@@ -1,6 +1,6 @@
 # my-obsidian
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: MIT](LICENSE.md)
 [![Release](https://img.shields.io/github/v/release/mayknxyz/my-obsidian)](https://github.com/mayknxyz/my-obsidian/releases)
 [![Obsidian](https://img.shields.io/badge/Obsidian-1.5+-purple)](https://obsidian.md)
 [![GitHub Stars](https://img.shields.io/github/stars/mayknxyz/my-obsidian)](https://github.com/mayknxyz/my-obsidian/stargazers)
@@ -62,6 +62,29 @@ Your data in `Items/`, `Files/`, `Custom/`, and `REMINDERS.md` won't conflict si
    - Default location for new attachments: `In the folder specified below`
    - Attachment folder path: `Files`
 
+### TaskNotes (Community Plugin)
+
+1. Settings → Community plugins → Browse → Search "TaskNotes" → Install
+2. Enable TaskNotes plugin
+3. Settings → TaskNotes:
+   - Base views folder: `Bases/Views`
+   - Base views prefix: `08 Tasks`
+   - Appearance & UI → Project Autosuggest:
+     - Required property key: `type`
+     - Required property value: `Project`
+   - Property Mapping → Projects: `project`
+   - Property Mapping → Contexts: `context`
+   - User Fields: Remove any empty entries to avoid UNDEFINED fields
+
+TaskNotes manages all task creation, recurring tasks, and calendar integration. See [TaskNotes docs](https://tasknotes.dev/) for configuration.
+
+## Hotkeys
+
+| Shortcut | Action |
+|----------|--------|
+| `Alt+T` | Insert template |
+| `Ctrl+Shift+N` | Create new task (TaskNotes) |
+
 ## Structure
 
 ```
@@ -69,8 +92,9 @@ Vault/
 ├── Bases/
 │   ├── Status/             # Inbox, Backlog, Active, Blocked, Done
 │   ├── Timeline/           # Overdue, Today, This Week, Upcoming, Someday
-│   └── Views/              # Ideas, Journal, Goals, Projects, Wiki, etc.
+│   └── Views/              # Ideas, Journal, Goals, Projects, Tasks (TaskNotes), etc.
 ├── Custom/                 # Your custom files (won't conflict with updates)
+├── Docs/                   # System documentation (BLUEPRINT, CHANGELOG, etc.)
 ├── Files/                  # Attachments - Core Plugin: Files and links
 ├── Items/                  # All typed items (flat) + Journal entries
 ├── Templates/              # Item templates - Core Plugin: Templates
@@ -97,7 +121,7 @@ Edit it directly anytime. No special syntax required—just plain markdown.
 | Project | Deliverable work |
 | Epic | Feature grouping |
 | Story | User-facing functionality |
-| Task | Actionable work item |
+| Task | Actionable work item (managed by TaskNotes plugin) |
 | Feature | New capability or enhancement |
 | Bug | Defect tracking |
 | Idea | Parking lot for concepts |
@@ -121,11 +145,15 @@ Supporting types (Contact, Meeting, Documentation) link via `project` or `parent
 - `parent` - Direct parent link
 - `project` - Root project (always set for nested items)
 - `account` - Account context
-- `area` - Dev, Ops, Marketing, Sales, Finance, Admin
-- `priority` - P1, P2, P3
+- `dept` - Dev, Ops, Marketing, Sales, Finance, Admin
+- `context` - @home, @work, @computer, @phone, @errands (GTD contexts)
+- `priority` - Low, Normal, High
 - `due` - Deadline
-- `wiki` - Wiki category (Languages, Frameworks, Tools, Platforms)
-- `link` - Technology reference as wiki link (e.g., `[[Python]]`, `[[Docker]]`)
+- `scheduled` - Scheduled start date (TaskNotes)
+- `estimate` - Time estimate (TaskNotes)
+- `recurrence` - Recurrence pattern (TaskNotes)
+
+See `Templates/Template: Property Defaults.md` for all property values.
 
 ## Status Flow
 
@@ -150,10 +178,11 @@ Bases/Status/
 ## Recommended Plugins
 
 - **Dataview** - For embedded queries in templates (required for template queries to work)
+- **TaskNotes** - Task management with calendar integration, recurring tasks, and time tracking ([docs](https://tasknotes.dev/))
 
 ## Documentation
 
-See [BLUEPRINT.md](BLUEPRINT.md) for the complete architecture, all templates, property schema, Bases configuration, and workflows.
+See [BLUEPRINT.md](Blueprint.md) for the complete architecture, all templates, property schema, Bases configuration, and workflows.
 
 ## nvim Compatible
 

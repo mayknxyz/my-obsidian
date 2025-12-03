@@ -1,18 +1,20 @@
 ---
 type:
   - Wiki
-wiki:
-  - 
-link:
+status:
+  - Inbox
 parent:
 project:
 account:
-area:
-  - 
+dept:
+  -
+context:
+  -
+priority:
+  -
+due:
 created: "{{date}}"
 tags: []
-status:
-  - Inbox
 ---
 
 # {{title}}

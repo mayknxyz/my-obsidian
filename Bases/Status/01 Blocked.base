@@ -16,6 +16,8 @@ views:
             - type == ["Goal"]
             - type == ["Idea"]
             - type == ["Feature"]
+            - type == ["Wiki"]
+            - type == ["Journal"]
     order:
       - file.name
       - status
