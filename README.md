@@ -64,9 +64,11 @@ Your data in `Items/`, `Files/`, `Custom/`, and `REMINDERS.md` won't conflict si
 
 ### TaskNotes (Community Plugin)
 
+> **Warning:** This repo includes TaskNotes settings (`.obsidian/plugins/tasknotes/data.json`). Pulling updates will overwrite your TaskNotes configuration. Back up your `data.json` before merging if you have custom settings.
+
 1. Settings → Community plugins → Browse → Search "TaskNotes" → Install
 2. Enable TaskNotes plugin
-3. Settings → TaskNotes:
+3. Restart Obsidian to apply included settings, or configure manually:
    - Base views folder: `Bases/Views`
    - Base views prefix: `08 Tasks`
    - Appearance & UI → Project Autosuggest:
@@ -74,7 +76,6 @@ Your data in `Items/`, `Files/`, `Custom/`, and `REMINDERS.md` won't conflict si
      - Required property value: `Project`
    - Property Mapping → Projects: `project`
    - Property Mapping → Contexts: `context`
-   - User Fields: Remove any empty entries to avoid UNDEFINED fields
 
 TaskNotes manages all task creation, recurring tasks, and calendar integration. See [TaskNotes docs](https://tasknotes.dev/) for configuration.
 
