@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 7 TaskNotes bases in `Bases/Views/` (08 Tasks*.base): table, agenda, calendar, kanban, mini-calendar, relationships, overview
 - New properties for TaskNotes: `scheduled`, `estimate`, `recurrence`, `completed`, `modified`, `archived`, `blocked`, `pomodoros`, `reminders`, `complete_instances`, `icsEventId`, `ics_event`
 - `context` property for GTD-style location/tool filtering (@home, @work, @computer, @phone, @errands)
+- Custom hotkeys: `Alt+T` (insert template), `Ctrl+Shift+N` (create new task)
 
 ### Changed
 

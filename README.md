@@ -72,6 +72,13 @@ Your data in `Items/`, `Files/`, `Custom/`, and `REMINDERS.md` won't conflict si
 
 TaskNotes manages all task creation, recurring tasks, and calendar integration. See [TaskNotes docs](https://tasknotes.dev/) for configuration.
 
+## Hotkeys
+
+| Shortcut | Action |
+|----------|--------|
+| `Alt+T` | Insert template |
+| `Ctrl+Shift+N` | Create new task (TaskNotes) |
+
 ## Structure
 
 ```

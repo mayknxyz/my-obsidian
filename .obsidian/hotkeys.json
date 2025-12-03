@@ -1,0 +1,19 @@
+{
+  "insert-template": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "T"
+    }
+  ],
+  "tasknotes:create-new-task": [
+    {
+      "modifiers": [
+        "Ctrl",
+        "Shift"
+      ],
+      "key": "N"
+    }
+  ]
+}
